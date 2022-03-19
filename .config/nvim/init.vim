@@ -1,4 +1,4 @@
-
+"
 " PLUGINS
 "
 call plug#begin('~/.vim/plugged')
@@ -38,8 +38,8 @@ colorscheme onedark
 set scrolloff=8
 set number
 set relativenumber
-set tabstop=4 softtabstop=4
-set shiftwidth=4
+set tabstop=2 softtabstop=2
+set shiftwidth=2
 set expandtab
 set smartindent
 "
@@ -61,13 +61,17 @@ let g:gitgutter_sign_removed_first_line = '-'
 let g:gitgutter_sign_modified_removed = '-'
 "
 "
-"
 " REMAP KEYS "
 "
+inoremap jk <ESC>
 let mapleader = " "
 " reload config
 nnoremap <leader>r<CR> :so ~/.config/nvim/init.vim<CR>
-" Vertical explorer split
+" Explorer
+nnoremap <leader>pe :E<CR>
+" Horizontal explorer split
+nnoremap <leader>ph :Hex<CR>
+"Vertical explorer split
 nnoremap <leader>pv :Vex<CR>
 " Fzy finder git files
 nnoremap <C-p> :GFiles<CR>
@@ -84,5 +88,9 @@ nnoremap <leader>y "+y
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 "
-"
+" Prettier
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+vmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>F  <Plug>(coc-format-selected)
+nmap <leader>f :CocCommand prettier.formatFile<CR>
 "
