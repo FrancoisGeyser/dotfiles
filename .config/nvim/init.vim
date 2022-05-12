@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 "Plug 'ayu-theme/ayu-vim'
 Plug 'joshdick/onedark.vim'
 " Files
+" Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -18,8 +19,11 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
+"Toggle comments
+Plug 'tomtom/tcomment_vim'
+"Cheat sheet
+Plug 'dbeniamine/cheat.sh-vim'
 call plug#end()
-"
 "
 "
 "
@@ -38,10 +42,19 @@ colorscheme onedark
 set scrolloff=8
 set number
 set relativenumber
-set tabstop=2 softtabstop=2
-set shiftwidth=2
+set tabstop=4 softtabstop=4
+set shiftwidth=4
 set expandtab
 set smartindent
+" Nice menu when typing `:find *.py`
+set wildmode=longest,list,full
+set wildmenu
+set path+=**
+" Ignore files
+set wildignore+=**/build/*
+set wildignore+=**/dist/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/.git/*
 "
 "
 "
@@ -77,6 +90,7 @@ nnoremap <leader>pv :Vex<CR>
 nnoremap <C-p> :GFiles<CR>
 " Fzy finder files
 nnoremap <leader>pf :Files<CR>
+nnoremap <silent> <Leader>ff :Rg<CR>
 " grep with quickfix list
 nnoremap <C-E> :copen<CR>
 nnoremap <C-j> :cnext<CR>
@@ -87,6 +101,19 @@ nnoremap <leader>y "+y
 " move line up and down
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
+"
+" greatest remap ever
+xnoremap <leader>p "_dP
+
+" next greatest remap ever : asbjornHaland
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nmap <leader>Y "+Y
+
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+"
+"
 "
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
