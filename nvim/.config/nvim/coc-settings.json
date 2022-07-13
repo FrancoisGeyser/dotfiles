@@ -1,5 +1,18 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css",  "scss", "markdown"],
+  "suggest.maxCompleteItemCount": 20,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "scss",
+    "markdown",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact"
+  ],
+  "diagnostic.errorSign": "•",
+  "diagnostic.warningSign": "•",
+  "diagnostic.infoSign": "•",
   "prettier.trailingComma": "es5",
   "prettier.tabWidth": 2,
   "prettier.semi": false,
