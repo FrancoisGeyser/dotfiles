@@ -1,5 +1,25 @@
+" check whether vim-plug is installed and install it if necessary
+let plugpath = expand('<sfile>:p:h'). '/autoload/plug.vim'
+if !filereadable(plugpath)
+    if executable('curl')
+        let plugurl = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        call system('curl -fLo ' . shellescape(plugpath) . ' --create-dirs ' . plugurl)
+        if v:shell_error
+            echom "Error downloading vim-plug. Please install it manually.\n"
+            exit
+        endif
+    else
+        echom "vim-plug not installed. Please install it manually or install curl.\n"
+        exit
+    endif
+endif
+
+" LS for vue 
+let g:LanguageClient_serverCommands = {
+    \ 'vue': ['vls']
+    \ }
 "
-" PLUGINS
+"" PLUGINS
 "
 call plug#begin('~/.vim/plugged')
 " Theme
@@ -28,6 +48,8 @@ Plug 'tpope/vim-surround' "Surround
 " Plug 'pangloss/vim-javascript'
 " Plug 'leafgarland/typescript-vim'
 " Plug 'peitalin/vim-jsx-typescript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'posva/vim-vue'
 "
 " Styling
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -38,15 +60,23 @@ call plug#end()
 "
 "
 let g:coc_global_extensions = [
+            \ 'coc-highlight',
             \ 'coc-emmet',
             \ 'coc-html',
             \ 'coc-json',
             \ 'coc-css',
             \ 'coc-cssmodules',
             \ 'coc-tsserver',
-            \ 'coc-eslint',
-            \ 'coc-prettier'
+            \ 'coc-vetur',
             \ ]
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 "
 "
 " SETUP THEME
@@ -112,7 +142,9 @@ let g:user_emmet_leader_key='<C-e>'
 " Leader key
 let mapleader = " "
 " reload config
-nnoremap <leader>r<CR> :so ~/.config/nvim/init.vim<CR>
+nnoremap <leader>vr<CR> :so ~/.config/nvim/init.vim<CR>
+" open config
+map <leader>ve<CR> :sp $MYVIMRC<CR>
 " Create new buffers vertically or horizontally 
 nnoremap ,v <C-w>v
 nnoremap ,h <C-w>s
@@ -135,7 +167,7 @@ nnoremap <leader>pv :Vex<CR>
 nnoremap <C-p> :GFiles<CR>
 " Fzy finder files
 nnoremap <C-f> :Files<CR>
-nnoremap <silent> <C-R> :Rg<CR>
+nnoremap <silent> <C-r>  Rg<CR>
 " grep with quickfix list
 nnoremap <C-E> :copen<CR>
 nnoremap <C-J> :cnext<CR>
@@ -242,7 +274,7 @@ xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>qa  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -291,18 +323,18 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent><nowait> <leader>ca  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <leader>ce  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent><nowait> <leader>cc  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent><nowait> <leader>co  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent><nowait> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent><nowait> <leader>cj  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent><nowait> <leader>ck  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>cp  :<C-u>CocListResume<CR>

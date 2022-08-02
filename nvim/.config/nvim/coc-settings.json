@@ -8,8 +8,11 @@
     "typescript",
     "typescriptreact",
     "json",
-    "javascriptreact"
+    "javascriptreact",
+    "vue"
   ],
+  "tsserver.formatOnType": true,
+  "coc.preferences.formatOnType": true,
   "diagnostic.errorSign": "•",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "•",

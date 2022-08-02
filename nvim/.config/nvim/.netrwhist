@@ -1,5 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/home/francois/.config'
-let g:netrw_dirhist_2='/home/francois/dotfiles'
-let g:netrw_dirhist_1='/home/francois/dotfiles/.config/nvim'
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/media/francois/Data2/Project/hireex/src/api'
+let g:netrw_dirhist_3='/media/francois/Data2/Project/hireex/src'
+let g:netrw_dirhist_2='/media/francois/Data2/Project/hireex/src/components'
+let g:netrw_dirhist_1='/media/francois/Data2/Project/hireex/src/components/page'
+let g:netrw_dirhist_0='/media/francois/Data2/Project/hireex/src/components'
+let g:netrw_dirhist_9='/media/francois/Data2/Project/hireex/src'
+let g:netrw_dirhist_8='/media/francois/Data2/Project/hireex/src/api'
+let g:netrw_dirhist_7='/media/francois/Data2/Project/hireex/src'
+let g:netrw_dirhist_6='/media/francois/Data2/Project/hireex'
+let g:netrw_dirhist_5='/media/francois/Data2/Project/hireex/public'
