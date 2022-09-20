@@ -8,8 +8,7 @@
     "typescript",
     "typescriptreact",
     "json",
-    "javascriptreact",
-    "vue"
+    "javascriptreact"
   ],
   "tsserver.formatOnType": true,
   "coc.preferences.formatOnType": true,

@@ -15,9 +15,9 @@ if !filereadable(plugpath)
 endif
 
 " LS for vue 
-let g:LanguageClient_serverCommands = {
-    \ 'vue': ['vls']
-    \ }
+" let g:LanguageClient_serverCommands = {
+"    \ 'vue': ['vls']
+"    \ }
 "
 "" PLUGINS
 "
@@ -49,7 +49,7 @@ Plug 'tpope/vim-surround' "Surround
 " Plug 'leafgarland/typescript-vim'
 " Plug 'peitalin/vim-jsx-typescript'
 Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'posva/vim-vue'
+" Plug 'posva/vim-vue'
 "
 " Styling
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
@@ -67,7 +67,7 @@ let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-cssmodules',
             \ 'coc-tsserver',
-            \ 'coc-vetur',
+            \ 'coc-pyright',
             \ ]
 
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -158,13 +158,13 @@ noremap <C-Down> <C-W>-
 noremap <C-Left> <C-W>>
 noremap <C-Right> <C-W><
 " Explorer
-nnoremap <leader>pe :E<CR>
+nnoremap <leader>fe :E<CR>
 " Horizontal explorer split
-nnoremap <leader>ph :Hex<CR>
+nnoremap <leader>fh :Hex<CR>
 "Vertical explorer split
-nnoremap <leader>pv :Vex<CR>
+nnoremap <leader>fv :Vex<CR>
 " Fzy finder git files
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-g> :GFiles<CR>
 " Fzy finder files
 nnoremap <C-f> :Files<CR>
 nnoremap <silent> <C-r>  Rg<CR>
