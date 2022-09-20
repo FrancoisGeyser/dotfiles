@@ -48,8 +48,8 @@ Plug 'tpope/vim-surround' "Surround
 " Plug 'pangloss/vim-javascript'
 " Plug 'leafgarland/typescript-vim'
 " Plug 'peitalin/vim-jsx-typescript'
-Plug 'MaxMEllon/vim-jsx-pretty'
-" Plug 'posva/vim-vue'
+" Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'sheerun/vim-polyglot'
 "
 " Styling
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
