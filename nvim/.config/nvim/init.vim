@@ -68,15 +68,17 @@ let g:coc_global_extensions = [
             \ 'coc-cssmodules',
             \ 'coc-tsserver',
             \ 'coc-pyright',
+            \ 'coc-prettier',
+            \ 'coc-eslint',
             \ ]
 
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
+" if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+"   let g:coc_global_extensions += ['coc-prettier']
+" endif
 
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
+" if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+"   let g:coc_global_extensions += ['coc-eslint']
+" endif
 "
 "
 " SETUP THEME
@@ -163,11 +165,13 @@ nnoremap <leader>fe :E<CR>
 nnoremap <leader>fh :Hex<CR>
 "Vertical explorer split
 nnoremap <leader>fv :Vex<CR>
-" Fzy finder git files
-nnoremap <C-g> :GFiles<CR>
 " Fzy finder files
-nnoremap <C-f> :Files<CR>
-nnoremap <silent> <C-r>  Rg<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>fgg :GFiles?<CR>
+nnoremap <leader>ff :Files 
+nnoremap <leader>fr :Rg<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fc :Cheat 
 " grep with quickfix list
 nnoremap <C-E> :copen<CR>
 nnoremap <C-J> :cnext<CR>
@@ -175,16 +179,13 @@ nnoremap <C-K> :cprev<CR>
 " yank to clipboard
 vnoremap <leader>y "+y
 nnoremap <leader>y "+y
+nmap <leader>Y "+Y
 " move line up and down
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 "
 " greatest remap ever
 xnoremap <leader>p "_dP
-" next greatest remap ever : asbjornHaland
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nmap <leader>Y "+Y
 "
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
