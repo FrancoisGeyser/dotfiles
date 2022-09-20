@@ -14,6 +14,14 @@ if !filereadable(plugpath)
     endif
 endif
 
+set shell=/bin/zsh
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
 " LS for vue 
 " let g:LanguageClient_serverCommands = {
 "    \ 'vue': ['vls']
@@ -28,6 +36,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "
 " Files
+Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "
@@ -173,6 +182,11 @@ nnoremap <leader>fr :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>fw :Windows<CR>
 nnoremap <leader>fc :Cheat 
+" NERDTree
+nnoremap <leader>nn :NERDTreeFocus<CR>
+nnoremap <leader>n :NERDTree<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
 " grep with quickfix list
 nnoremap <C-E> :copen<CR>
 nnoremap <C-J> :cnext<CR>
