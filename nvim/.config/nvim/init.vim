@@ -171,6 +171,7 @@ nnoremap <leader>fgg :GFiles?<CR>
 nnoremap <leader>ff :Files 
 nnoremap <leader>fr :Rg<CR>
 nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fw :Windows<CR>
 nnoremap <leader>fc :Cheat 
 " grep with quickfix list
 nnoremap <C-E> :copen<CR>
