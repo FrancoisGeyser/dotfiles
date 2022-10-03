@@ -17,7 +17,7 @@ endif
 set shell=/bin/zsh
 
 " Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+"" "autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
@@ -187,6 +187,10 @@ nnoremap <leader>nn :NERDTreeFocus<CR>
 nnoremap <leader>n :NERDTree<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
 nnoremap <leader>nf :NERDTreeFind<CR>
+" Hide current search highlight
+nnoremap <nowait><silent> <C-N> :noh<CR>
+" Clear search string
+nnoremap <nowait><silent> <C-C> :let @/ = ""<CR>
 " grep with quickfix list
 nnoremap <C-E> :copen<CR>
 nnoremap <C-J> :cnext<CR>
@@ -233,11 +237,7 @@ function! CheckBackspace() abort
 endfunction
 
 " Use <c-space> to trigger completion.
-if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
